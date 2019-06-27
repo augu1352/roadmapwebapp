@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'roadmapper.wsgi.application'
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'nellieDB',
+    'NAME': 'roadmap',
     'USER': 'roadmapuser',
     'PASSWORD': 'roadmappassword',
     'PORT': '5432'
