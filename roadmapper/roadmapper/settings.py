@@ -81,6 +81,7 @@ DATABASES = {
     'NAME': 'roadmapDB',
     'USER': 'roadmapuser',
     'PASSWORD': 'roadmappassword',
+    'HOST': "localhost",
     'PORT': '5432'
     }
     # 'default': {
