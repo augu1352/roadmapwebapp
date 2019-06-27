@@ -79,8 +79,8 @@ DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.postgresql',
     'NAME': 'nellieDB',
-    'USER': 'postgres',
-    'PASSWORD': "postgres",
+    'USER': 'roadmapuser',
+    'PASSWORD': 'roadmappassword',
     'PORT': '5432'
     }
     # 'default': {
