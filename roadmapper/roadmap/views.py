@@ -5,6 +5,17 @@ import psycopg2
 
 # Create your views here.
 def index(request):
+    conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
+    cur = conn.cursor()
+
+    if "session_id" in request.COOKIES:
+        try:
+            cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
+        except:
+            pass
+        else:
+            HttpResponseRedirect("/roadmap/")
+            
     template = "index.html"
     context = {}
     response = render(request, template, context)
