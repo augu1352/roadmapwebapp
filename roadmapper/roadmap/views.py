@@ -109,7 +109,8 @@ def roadmap(request):
     cur.callproc("fn_getuser", [request.COOKIES["session_id"]])
     fetched = cur.fetchone()
     print(fetched)
-    # userId = list(fetched[0])[0]
+    userId = list(fetched)[0]
+    print(userId)
 
     conn.commit()
     cur.close()
