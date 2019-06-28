@@ -25,7 +25,7 @@ SECRET_KEY = '&&(okn565)@nud^an6@$34gu)_!1sm#%w#)-@q^4u=443szk0g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
     'NAME': 'roadmapDB',
     'USER': 'roadmapuser',
     'PASSWORD': 'roadmappassword',
-    'HOST': "localhost",
+    'HOST': 'localhost',
     'PORT': '5432'
     }
     # 'default': {
