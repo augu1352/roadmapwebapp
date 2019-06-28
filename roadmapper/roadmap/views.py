@@ -5,7 +5,9 @@ import psycopg2
 
 # Create your views here.
 def index(request):
-    return HttpResponse("<h1>Hello World</h1>")
+    template = "index.html"
+    context = {}
+    response = render(request, template, context)
 
 
 def createUser(request):
