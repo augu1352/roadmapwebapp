@@ -33,7 +33,7 @@ def createUser(request):
             return HttpResponseRedirect("/login/")
     form = CreateUserForm()
     template = "createUser.html"
-    context = {"form", form}
+    context = {"form": form}
     response = render(request, template, context)
     return response
 
