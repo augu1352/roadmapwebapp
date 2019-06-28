@@ -11,6 +11,7 @@ def index(request):
     if "session_id" in request.COOKIES:
         cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
         fetched = cur.fetchone()
+        print(fetched)
         if "True" in fetched:
             return HttpResponseRedirect("/roadmap/")
         else:
