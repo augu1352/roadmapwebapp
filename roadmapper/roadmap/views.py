@@ -95,9 +95,9 @@ def roadmap(request):
     conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
     cur = conn.cursor()
 
-    if "session_id" in request.COOKIES:
-        cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
-        fetched = cur.fetchone()
+    # if "session_id" in request.COOKIES:
+    #     cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
+    #     fetched = cur.fetchone()
     #     if "True" in str(fetched):
     #         pass
     #     else:
