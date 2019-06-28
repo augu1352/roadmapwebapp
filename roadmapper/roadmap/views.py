@@ -58,19 +58,44 @@ def login(request):
                 session_id = list(fetched)[0]
 
                 response.set_cookie("session_id", session_id)
+                conn.commit()
+                cur.close()
+                conn.close()
                 return response
             else:
                 message = "Wrong Password!"
                 return render(request, "login.html", {"form": form, "message": message})
 
-            conn.commit()
-            cur.close()
-            conn.close()
+
 
             return HttpResponseRedirect("/roadmap/")
+    form LoginForm()
+    template = "login.html"
+    context = {"form": form}
+    response = render(request, template, context)
+    return response
 
 
 def roadmap(request):
-    response = render(resuest, "roadmap.html")
+    conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
+    cur = conn.cursor()
+
+    if "session_id" in request.COOKIES:
+        cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
+        fetched = cur.fetchone()
+        if "True" in str(fetched):
+            pass
+        else:
+            return HttpResponseRedirect("/")
+    else:
+        return HttpResponseRedirect("/")
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    template = "roadmap.html"
+    context = {}
+    response = render(request, template, context)
 
     return response

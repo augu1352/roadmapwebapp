@@ -9,6 +9,6 @@ class CreateUserForm(forms.Form):
 
 
 
-class LoginUserForm(forms.Form):
+class LoginForm(forms.Form):
     username = forms.CharField(label="Username")
     password = forms.CharField(widget=forms.PasswordInput())
