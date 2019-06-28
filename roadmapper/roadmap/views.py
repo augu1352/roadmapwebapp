@@ -39,7 +39,7 @@ def createUser(request):
 
 def login(request):
     if request.method == "POST":
-        form = LoginUserForm(request.POST)
+        form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data["username"]
             password = form.cleaned_data["password"]
