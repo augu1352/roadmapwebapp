@@ -12,7 +12,7 @@ def index(request):
         cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
         fetched = cur.fetchone()
         print(fetched)
-        if "True" in fetched:
+        if "True" in str(fetched):
             return HttpResponseRedirect("/roadmap/")
         else:
             pass
