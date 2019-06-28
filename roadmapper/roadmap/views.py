@@ -14,6 +14,7 @@ def index(request):
         except:
             print("something went wrong! DEBUG!")
         else:
+            print("something went right! DEBUG!")
             HttpResponseRedirect("/roadmap/")
 
     conn.commit()
