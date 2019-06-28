@@ -8,6 +8,9 @@ https://docs.djangoproject.com/en/2.1/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+sys.path.append("/home/augu1352/roadmapRepo/roadmapwebapp/roadmapper/")
 
 from django.core.wsgi import get_wsgi_application
 
