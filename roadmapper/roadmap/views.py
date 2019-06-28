@@ -69,7 +69,7 @@ def login(request):
 
 
             return HttpResponseRedirect("/roadmap/")
-    form LoginForm()
+    form = LoginForm()
     template = "login.html"
     context = {"form": form}
     response = render(request, template, context)
