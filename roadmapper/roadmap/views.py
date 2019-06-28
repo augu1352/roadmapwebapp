@@ -83,12 +83,12 @@ def roadmap(request):
     if "session_id" in request.COOKIES:
         cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
         fetched = cur.fetchone()
-        if "True" in str(fetched):
-            pass
-        else:
-            return HttpResponseRedirect("/")
-    else:
-        return HttpResponseRedirect("/")
+    #     if "True" in str(fetched):
+    #         pass
+    #     else:
+    #         return HttpResponseRedirect("/")
+    # else:
+    #     return HttpResponseRedirect("/")
 
     conn.commit()
     cur.close()
