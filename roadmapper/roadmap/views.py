@@ -9,6 +9,8 @@ def index(request):
     context = {}
     response = render(request, template, context)
 
+    return response
+
 
 def createUser(request):
     if request.method == "POST":
