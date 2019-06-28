@@ -12,10 +12,14 @@ def index(request):
         try:
             cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
         except:
-            pass
+            print("something went wrong! DEBUG!")
         else:
             HttpResponseRedirect("/roadmap/")
-            
+
+    conn.commit()
+    cur.close()
+    conn.close()
+
     template = "index.html"
     context = {}
     response = render(request, template, context)
