@@ -9,17 +9,12 @@ def index(request):
     cur = conn.cursor()
 
     if "session_id" in request.COOKIES:
-        try:
-            cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
-        except:
-            print("something went wrong! DEBUG!")
-            fetched = cur.fetchall()
-            print(fetched)
-        else:
-            print("something went right! DEBUG!")
-            fetched = cur.fetchall()
-            print(fetched)
+        cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
+        fetched = cur.fetchone()
+        if "True" in fetched:
             return HttpResponseRedirect("/roadmap/")
+        else:
+            pass
 
     conn.commit()
     cur.close()
@@ -100,15 +95,20 @@ def roadmap(request):
     conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
     cur = conn.cursor()
 
-    # if "session_id" in request.COOKIES:
-    #     cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
-    #     fetched = cur.fetchone()
-    #     if "True" in str(fetched):
-    #         pass
-    #     else:
-    #         return HttpResponseRedirect("/")
-    # else:
-    #     return HttpResponseRedirect("/")
+    if "session_id" in request.COOKIES:
+        cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
+        fetched = cur.fetchone()
+        if "True" in str(fetched):
+            pass
+        else:
+            return HttpResponseRedirect("/")
+    else:
+        return HttpResponseRedirect("/")
+
+    cur.callproc("fn_getuser", [request.COOKIES["session_id"]])
+    fetched = cur.fetchone()
+    print(fetched)
+    # userId = list(fetched[0])[0]
 
     conn.commit()
     cur.close()
