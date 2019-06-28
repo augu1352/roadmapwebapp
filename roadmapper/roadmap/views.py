@@ -13,8 +13,12 @@ def index(request):
             cur.callproc("fn_checksessionid", [request.COOKIES["session_id"]])
         except:
             print("something went wrong! DEBUG!")
+            fetched = cur.fetchall()
+            print(fetched)
         else:
             print("something went right! DEBUG!")
+            fetched = cur.fetchall()
+            print(fetched)
             return HttpResponseRedirect("/roadmap/")
 
     conn.commit()
