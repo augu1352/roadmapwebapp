@@ -36,7 +36,7 @@ def createUser(request):
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
             confirm_password = form.cleaned_data["confirm_password"]
-            print(password, confirm_password)
+            print(f"DEBUG {password}, {confirm_password}")
 
             if password == confirm_password:
                 conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
