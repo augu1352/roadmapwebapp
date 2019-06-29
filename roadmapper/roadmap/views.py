@@ -63,6 +63,8 @@ def createUser(request):
             conn.close()
 
             return HttpResponseRedirect("/login/")
+        else:
+            print("not valid")
     form = CreateUserForm()
     template = "createUser.html"
     context = {"form": form}
