@@ -36,22 +36,12 @@ def createUser(request):
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
             confirm_password = form.cleaned_data["confirm_password"]
-            print(f"DEBUG {password}, {confirm_password}")
 
-            if password == confirm_password:
-                conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
-                cur = conn.cursor()
-
-                cur.callproc("fn_createuser", (username, email, password))
-
-                conn.commit()
-                cur.close()
-                conn.close()
-
-                return HttpResponseRedirect("/login/")
-            else:
-                message = "Password and confirm password does not match"
-                return render(request, "createUser.html", {"form": form, "message": message})
+            # if password != confirm_password:
+            #     message = "Password and confirm password does not match"
+            #     return render(request, "createUser.html", {"form": form, "message": message})
+            # else:
+            #     pass
 
             conn = psycopg2.connect(dbname="roadmapDB", user="roadmapuser", password="roadmappassword", host="localhost")
             cur = conn.cursor()
@@ -64,7 +54,8 @@ def createUser(request):
 
             return HttpResponseRedirect("/login/")
         else:
-            print("not valid")
+            message = "Password and confirm password does not match"
+            return render(request, "createUser.html", {"form": form, "message": message})
     form = CreateUserForm()
     template = "createUser.html"
     context = {"form": form}
