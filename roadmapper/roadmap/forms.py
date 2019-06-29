@@ -6,7 +6,7 @@ class CreateUserForm(forms.Form):
     email = forms.EmailField(label="Email Address")
     password = forms.CharField(widget=forms.PasswordInput())
     confirm_password = forms.CharField(widget=forms.PasswordInput())
-    termsAndConditions = forms.MultipleChoiceField(widget=forms.CheckboxInput(), choices=[("agree", "I agree to the terms and conditions")])
+    # termsAndConditions = forms.MultipleChoiceField(widget=forms.CheckboxInput(), choices=[("agree", "I agree to the terms and conditions")])
 
 
 
